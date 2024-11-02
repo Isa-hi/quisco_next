@@ -1,10 +1,11 @@
 "use client";
 import { useStore } from "@/src/store";
 import ProductDetails from "./ProductDetails";
+import { formatCurrency } from "@/src/utils";
 
 export default function OrderSummary() {
   const { order } = useStore();
-  console.log(order);
+  
 
   return (
     <div className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
@@ -16,6 +17,14 @@ export default function OrderSummary() {
           {order.map((item) => 
             <ProductDetails key={item.id} item={item} />
           )}
+
+          <p className="text-2xl mt-20 text-center">
+            Total a pagar:{" "}
+            <span className="font-black">
+              {formatCurrency(order.reduce((total, item) => total + item.subtotal, 0)) }
+            </span>
+          </p>
+
         </div>
       )}
     </div>

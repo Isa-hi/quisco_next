@@ -1,10 +1,15 @@
 "use client";
+import { getImagePath } from "@/src/utils";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import { useState } from "react";
 import { TbPhotoPlus } from "react-icons/tb";
 
-export default function ImageUpload() {
+type ImageUploadProps = {
+  image: string | undefined;
+};
+
+export default function ImageUpload({ image }: ImageUploadProps) {
   const [imageURL, setImageURL] = useState("");
   return (
     <CldUploadWidget
@@ -38,7 +43,22 @@ export default function ImageUpload() {
               </>
             )}
           </div>
-          <input type="hidden" name="image" value={imageURL}/>
+
+          {image && !imageURL && (
+            <>
+              <label>Imagen actual:</label>
+              <div className="relative size-64">
+                <Image
+                fill
+                src={getImagePath(image)}
+                alt="Product Image"
+                style={{ objectFit: "contain" }}
+                />
+              </div>
+            </>
+          )}
+
+          <input type="hidden" name="image" defaultValue={imageURL ? imageURL : image} />
         </div>
       )}
     </CldUploadWidget>

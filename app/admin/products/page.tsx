@@ -30,7 +30,7 @@ export default async function ProductsPage({
 }: {
   searchParams: { page: string };
 }) {
-  const page = +searchParams.page || 1;
+  const page = await +searchParams.page || 1;
   const pageSize = 10;
 
   if (page < 1) redirect("/admin/products?page=1");

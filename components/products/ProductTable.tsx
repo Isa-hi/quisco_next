@@ -50,7 +50,7 @@ export default function ProductTable({ products }: ProductTableProps) {
                       {product.category.name}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                      <Link href={`/admin/product/${product.id}/edit`} className="text-indigo-800">
+                      <Link href={`/admin/products/${product.id}/edit`} className="text-indigo-800">
                         Editar{" "}
                         <span className="sr-only">, {product.name} </span>
                       </Link>

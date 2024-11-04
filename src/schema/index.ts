@@ -13,3 +13,7 @@ export const OrderSchema = z.object({
     })
   ),
 });
+
+export const OrderIdSchema = z.object({
+  order_id: z.string().transform((val) => parseInt(val)).refine(val => val > 0, "Hay errores"),
+});

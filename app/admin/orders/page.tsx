@@ -7,11 +7,12 @@ import { OrderWithProducts } from "@/src/types";
 export default function OrderPage() {
   const url = "/admin/orders/api";
   const fetcher = (url : string) => fetch(url).then((res) => res.json());
-  const { data: orders, isLoading, error } = useSWR<OrderWithProducts[]>(url, fetcher, { refreshInterval: 60000, revalidateOnFocus: false });
+  const { data: orders, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, { refreshInterval: 60000, revalidateOnFocus: false });
 
   const refreshOrders = () => {
     window.location.reload();
   };
+  if(isLoading) return <p>Cargando...</p>;
   if(orders) return (
     <>
       <Heading>Administra las ordenes</Heading>

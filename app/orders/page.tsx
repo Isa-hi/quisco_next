@@ -10,7 +10,6 @@ export default function page() {
   const {
     data: orders,
     isLoading,
-    error,
   } = useSWR<OrderWithProducts[]>(url, fetcher, {
     refreshInterval: 60000,
     revalidateOnFocus: false,

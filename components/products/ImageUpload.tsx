@@ -15,7 +15,7 @@ export default function ImageUpload({ image }: ImageUploadProps) {
     <CldUploadWidget
       uploadPreset="g7u0yspy"
       options={{ maxFiles: 1 }}
-      onSuccess={(result, { widget }) => {
+      onSuccess={(result) => {
         //@ts-ignore
         setImageURL(result.info.secure_url);
       }}

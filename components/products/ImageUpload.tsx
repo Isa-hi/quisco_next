@@ -16,7 +16,7 @@ export default function ImageUpload({ image }: ImageUploadProps) {
       uploadPreset="g7u0yspy"
       options={{ maxFiles: 1 }}
       onSuccess={(result) => {
-        //@ts-expect-error
+        //@ts-expect-error Cloudinary's upload widget result type is not well-defined
         setImageURL(result.info.secure_url);
       }}
     >

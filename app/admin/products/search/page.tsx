@@ -4,9 +4,9 @@ import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma";
 
 type SearchPageProps = {
-  searchParams: {
+  searchParams: Promise<{
     search: string;
-  };
+  }>;
 };
 
 async function productsSearch(searched: string) {
@@ -25,7 +25,7 @@ async function productsSearch(searched: string) {
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const searchedWord = searchParams.search;
+  const searchedWord = (await searchParams).search;
   const searchedProducts = await productsSearch(searchedWord);
 
   return (

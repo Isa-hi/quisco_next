@@ -4,7 +4,7 @@ import Logo from "@/components/ui/Logo";
 import { OrderWithProducts } from "@/src/types";
 import useSWR from "swr";
 
-export default function page() {
+export default function Page() {
   const url = "/orders/api";
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const {

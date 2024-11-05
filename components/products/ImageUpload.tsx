@@ -16,7 +16,7 @@ export default function ImageUpload({ image }: ImageUploadProps) {
       uploadPreset="g7u0yspy"
       options={{ maxFiles: 1 }}
       onSuccess={(result) => {
-        //@ts-ignore
+        //@ts-expect-error
         setImageURL(result.info.secure_url);
       }}
     >

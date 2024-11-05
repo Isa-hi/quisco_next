@@ -8,9 +8,9 @@ import { notFound } from "next/navigation";
 export default async function EditProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>; // Ensure params is a promise
 }) {
-  const { id } = params;
+  const { id } = await params; // Await the params
   const getProductById = async (id: string) => {
     const product = await prisma.product.findUnique({
       where: {
